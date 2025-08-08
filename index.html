@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Glossário Prático de Gestão — Termos Técnicos</title>
+  <meta name="description" content="Explicações simples e práticas sobre termos de gestão: 5S, 5W2H, SMART, Ishikawa, Skills, Kanban, P.O.A.A e mais.">
+  <style>
+    :root{
+      --bg:#f6f8fb; --card:#ffffff; --accent:#0b78d1; --muted:#6b7280; --glass:rgba(255,255,255,0.6);
+      --radius:12px; --max-width:1100px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:linear-gradient(180deg,var(--bg),#eef3fa);color:#0f1724;display:flex;align-items:flex-start;justify-content:center;padding:32px}
+    .container{width:100%;max-width:var(--max-width)}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#2fa6f6);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:20px;box-shadow:0 6px 18px rgba(11,120,209,0.18)}
+    h1{margin:0;font-size:20px}
+    p.lead{margin:0;color:var(--muted)}
+
+    .top-actions{display:flex;gap:12px;align-items:center}
+    .search{display:flex;align-items:center;background:var(--card);padding:8px 12px;border-radius:999px;box-shadow:0 4px 12px rgba(16,24,40,0.06);min-width:240px}
+    .search input{border:0;outline:0;background:transparent;font-size:14px;width:100%}
+    .grid{display:grid;grid-template-columns:1fr 360px;gap:20px}
+
+    /* cards */
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.04);cursor:pointer;transition:transform .12s ease, box-shadow .12s ease}
+    .card:hover{transform:translateY(-6px);box-shadow:0 14px 34px rgba(16,24,40,0.08)}
+    .card h3{margin:0;font-size:16px}
+    .card p{margin:8px 0 0;color:var(--muted);font-size:13px}
+    .tag{display:inline-block;margin-top:10px;padding:6px 8px;background:linear-gradient(90deg,rgba(11,120,209,0.08),rgba(47,166,246,0.04));border-radius:999px;color:var(--accent);font-weight:600;font-size:12px}
+
+    aside{position:sticky;top:32px}
+    .panel{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,0.04)}
+    .panel h4{margin:0 0 10px}
+    .list{display:flex;flex-direction:column;gap:8px;max-height:420px;overflow:auto;padding-right:6px}
+    .term-item{padding:8px;border-radius:8px;cursor:pointer}
+    .term-item:hover{background:linear-gradient(90deg,rgba(11,120,209,0.04),rgba(47,166,246,0.02))}
+
+    /* modal/detail */
+    .detail{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:24px}
+    .detail.show{display:flex}
+    .detail-card{width:100%;max-width:900px;background:var(--card);border-radius:14px;padding:20px;box-shadow:0 30px 60px rgba(8,12,20,0.25);max-height:90vh;overflow:auto}
+    .detail-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+    .close-btn{border:0;background:transparent;font-size:20px;cursor:pointer;color:var(--muted)}
+    .columns{display:grid;grid-template-columns:1fr 320px;gap:18px;margin-top:12px}
+    .small{font-size:13px;color:var(--muted)}
+    .example, .benefits, .tips{background:var(--bg);padding:10px;border-radius:10px}
+
+    footer{margin-top:22px;color:var(--muted);font-size:13px;text-align:center}
+
+    @media (max-width:980px){.grid{grid-template-columns:1fr}.columns{grid-template-columns:1fr}.aside{display:none}.cards{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">G</div>
+        <div>
+          <h1>Glossário Prático de Gestão</h1>
+          <p class="lead">Termos técnicos explicados de forma simples e com exemplos práticos.</p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <div class="search" role="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style="opacity:.6;margin-right:8px"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <input id="searchInput" placeholder="Buscar termo (ex: Kanban, 5S, SMART)..." aria-label="Buscar termos">
+        </div>
+      </div>
+    </header>
+
+    <section class="grid">
+      <section>
+        <div class="cards" id="cards">
+          <!-- Cards gerados via JS -->
+        </div>
+
+        <footer>
+          Dica: clique em qualquer termo para ver a explicação completa, exemplos e dicas de aplicação.
+        </footer>
+      </section>
+
+      <aside>
+        <div class="panel">
+          <h4>Glossário rápido</h4>
+          <div class="list" id="list"></div>
+        </div>
+
+        <div style="height:12px"></div>
+
+        <div class="panel">
+          <h4>Sobre</h4>
+          <p class="small">Este site foi projetado para transformar conceitos técnicos de gestão em explicações práticas. Ideal para estudos rápidos e consultas no dia a dia.</p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- modal detail -->
+    <div class="detail" id="detail">
+      <article class="detail-card" role="dialog" aria-modal="true">
+        <div class="detail-header">
+          <div>
+            <h2 id="detailTitle">Título do termo</h2>
+            <p class="small" id="detailSubtitle">Categoria • Palavra-chave</p>
+          </div>
+          <div>
+            <button class="close-btn" id="closeBtn" aria-label="Fechar">✕</button>
+          </div>
+        </div>
+
+        <div id="detailContent" style="margin-top:12px">
+          <!-- conteúdo dinâmico -->
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <script>
+    // --- Dados dos termos ---
+    const TERMS = [
+      {
+        id: '5s',
+        title: "5S",
+        subtitle: "Organização e padronização",
+        tags: ['produção','melhoria contínua'],
+        short: "Método para organizar e padronizar o local de trabalho em 5 etapas simples.",
+        definition: `<strong>Definição:</strong> 5S é uma metodologia japonesa composta por Seiri (Senso de Utilização), Seiton (Senso de Ordenação), Seisô (Senso de Limpeza), Seiketsu (Senso de Padronização) e Shitsuke (Senso de Disciplina).`,
+        example: `<strong>Exemplo prático:</strong> Em uma oficina, separar ferramentas em uso das que não são necessárias (Seiri), e criar locais marcados para cada ferramenta (Seiton).`,
+        benefits: [`Melhora a segurança`, `Reduz desperdício de tempo`, `Facilita a padronização de processos`],
+        tips: [`Comece com um pequeno espaço-piloto`, `Use etiquetas visuais e 5S como rotina semanal`]
+      },
+      {
+        id: '5w2h',
+        title: '5W2H',
+        subtitle: 'Plano de ação simplificado',
+        tags: ['gestão','planejamento'],
+        short: 'Ferramenta para definir ações respondendo 7 perguntas-chave.',
+        definition: `<strong>Definição:</strong> 5W2H é uma ferramenta que ajuda a planejar ações respondendo: What, Why, Where, When, Who, How, How much.`,
+        example: `<strong>Exemplo prático:</strong> Ao implementar um treinamento: What — Treinamento X; Who — Equipe A; When — 15/09; Where — Sala de Treinamento; How — Presencial; How much — R$ 2.000.`,
+        benefits: ['Clareza na execução','Responsabilidade definida','Estimativa de custos e prazos'],
+        tips: ['Registre 5W2H em uma planilha compartilhada','Reavalie após execução para melhorar estimativas']
+      },
+      {
+        id: 'smart',
+        title: 'SMART',
+        subtitle: 'Metas eficazes',
+        tags: ['planejamento','metas'],
+        short: 'Critérios para definir metas específicas e atingíveis.',
+        definition: `<strong>Definição:</strong> SMART é um acrônimo que orienta a definição de metas: Specific (Específica), Measurable (Mensurável), Achievable (Atingível), Relevant (Relevante) e Time-bound (Temporal).`,
+        example: `<strong>Exemplo prático:</strong> "Aumentar a taxa de conversão em 10% até 31/12" — específico, mensurável e com prazo.`,
+        benefits: ['Metas mais claras','Maior foco nas ações','Facilidade para acompanhar resultados'],
+        tips: ['Transforme objetivos amplos em metas SMART','Revise prazos para manter realismo']
+      },
+      {
+        id: 'ishikawa',
+        title: 'Diagrama de Ishikawa',
+        subtitle: 'Análise de causa e efeito',
+        tags: ['qualidade','análise'],
+        short: 'Ferramenta visual para identificar causas raiz de um problema.',
+        definition: `<strong>Definição:</strong> Também conhecido como diagrama espinha de peixe, ajuda equipes a mapear causas potenciais para um efeito (problema).`,
+        example: `<strong>Exemplo prático:</strong> Em um problema de atraso de entrega, mapear causas em categorias: Pessoas, Método, Máquina, Material, Medição e Meio Ambiente.`,
+        benefits: ['Identifica causas múltiplas','Facilita brainstorming com a equipe','Ajuda a priorizar ações'],
+        tips: ['Use dados para validar causas listadas','Combine com 5W2H para planejar correções']
+      },
+      {
+        id: 'skills',
+        title: 'Skills (Hard, Soft e Deep)',
+        subtitle: 'Competências profissionais',
+        tags: ['RH','desenvolvimento'],
+        short: 'Classificação de competências em técnicas, comportamentais e aprofundadas.',
+        definition: `<strong>Definição:</strong> Hard skills são habilidades técnicas (ex: Excel), Soft skills são comportamentais (ex: comunicação) e Deep skills são competências profundas e estratégicas (ex: pensamento crítico).`,
+        example: `<strong>Exemplo prático:</strong> Para um analista: Hard — SQL; Soft — comunicação; Deep — interpretação de dados para tomada de decisão.`,
+        benefits: ['Melhor alinhamento de treinamento','Contratações mais assertivas','Plano de carreira mais claro'],
+        tips: ['Mapeie skills por cargo','Invista em desenvolvimento contínuo e avaliações práticas']
+      },
+      {
+        id: 'kanban',
+        title: 'Kanban',
+        subtitle: 'Gestão visual de fluxo de trabalho',
+        tags: ['agile','fluxo'],
+        short: 'Quadro visual para gerenciar tarefas e limitar trabalho em progresso.',
+        definition: `<strong>Definição:</strong> Kanban usa cartões e colunas (por exemplo: A Fazer, Em Progresso, Concluído) para visualizar e melhorar o fluxo de trabalho.`,
+        example: `<strong>Exemplo prático:</strong> Em um time de marketing, mova tarefas do backlog para "Em Progresso" quando forem iniciadas e limite o número de itens em andamento.`,
+        benefits: ['Maior transparência','Redução de gargalos','Melhor ritmo de entrega'],
+        tips: ['Defina limites WIP (work in progress)','Faça reuniões rápidas diárias (standup) para alinhar']
+      },
+      {
+        id: 'poaa',
+        title: 'P.O.A.A',
+        subtitle: 'Plano Operacional de Ação e Avaliação',
+        tags: ['monitoramento','gestao'],
+        short: 'Ciclo de Planejar, Operar, Avaliar e Ajustar para executar e melhorar ações.',
+        definition: `<strong>Definição:</strong> P.O.A.A sintetiza um ciclo operacional: Planejar, Operar, Avaliar e Ajustar (ou Agir) para promover melhoria contínua.`,
+        example: `<strong>Exemplo prático:</strong> Planejar uma campanha (Planejar), executar (Operar), medir resultados (Avaliar) e adaptar estratégias (Ajustar).`,
+        benefits: ['Ciclo claro de melhoria','Integra avaliação às operações','Promove ajustes rápidos'],
+        tips: ['Registre métricas para avaliação','Defina responsáveis para cada etapa']
+      }
+    ];
+
+    // --- Render cards and list ---
+    const cardsEl = document.getElementById('cards');
+    const listEl = document.getElementById('list');
+
+    function createCard(term){
+      const div = document.createElement('div');
+      div.className = 'card';
+      div.tabIndex = 0;
+      div.dataset.id = term.id;
+      div.innerHTML = `
+        <div style="display:flex;align-items:center;gap:12px">
+          <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,rgba(11,120,209,0.12),rgba(47,166,246,0.06));display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">` + term.title.split(' ').map(s=>s[0]).join('').toUpperCase() + `</div>
+          <div style="flex:1">
+            <h3>${term.title}</h3>
+            <p>${term.short}</p>
+            <span class="tag">${term.subtitle}</span>
+          </div>
+        </div>
+      `;
+      div.addEventListener('click', ()=>openDetail(term.id));
+      div.addEventListener('keypress', (e)=>{ if(e.key==='Enter') openDetail(term.id)});
+      return div;
+    }
+
+    function createListItem(term){
+      const d = document.createElement('div');
+      d.className = 'term-item';
+      d.tabIndex = 0;
+      d.textContent = term.title + ' — ' + term.subtitle;
+      d.addEventListener('click', ()=>openDetail(term.id));
+      return d;
+    }
+
+    function renderAll(){
+      cardsEl.innerHTML = '';
+      listEl.innerHTML = '';
+      TERMS.forEach(t=>{
+        cardsEl.appendChild(createCard(t));
+        listEl.appendChild(createListItem(t));
+      });
+    }
+
+    renderAll();
+
+    // --- Search ---
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e)=>{
+      const q = e.target.value.trim().toLowerCase();
+      filterTerms(q);
+    });
+
+    function filterTerms(query){
+      const filtered = TERMS.filter(t=>{
+        if(!query) return true;
+        return [t.title,t.subtitle,t.short].join(' ').toLowerCase().includes(query) || (t.tags||[]).join(' ').toLowerCase().includes(query);
+      });
+      cardsEl.innerHTML = '';
+      listEl.innerHTML = '';
+      filtered.forEach(t=>{cardsEl.appendChild(createCard(t));listEl.appendChild(createListItem(t))});
+    }
+
+    // --- Detail modal ---
+    const detailEl = document.getElementById('detail');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailSubtitle = document.getElementById('detailSubtitle');
+    const detailContent = document.getElementById('detailContent');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openDetail(id){
+      const term = TERMS.find(t=>t.id===id);
+      if(!term) return;
+      detailTitle.textContent = term.title;
+      detailSubtitle.textContent = term.subtitle + ' • ' + (term.tags||[]).join(', ');
+      detailContent.innerHTML = `
+        <p>${term.definition}</p>
+        <div class="columns">
+          <div>
+            <h3>Exemplo</h3>
+            <div class="example">${term.example}</div>
+
+            <h3 style="margin-top:14px">Benefícios</h3>
+            <div class="benefits"><ul>${term.benefits.map(b=>`<li>${b}</li>`).join('')}</ul></div>
+
+            <h3 style="margin-top:14px">Dicas</h3>
+            <div class="tips"><ul>${term.tips.map(t=>`<li>${t}</li>`).join('')}</ul></div>
+          </div>
+
+          <aside>
+            <div style="padding:10px;border-radius:10px;background:var(--glass);backdrop-filter:blur(6px)">
+              <h4>Como aplicar</h4>
+              <p class="small">Use estas orientações práticas no seu dia a dia. Adapte ao contexto da sua equipe.</p>
+              <div style="height:10px"></div>
+              <strong>Passos rápidos</strong>
+              <ol class="small" style="padding-left:16px">
+                <li>Entenda o conceito</li>
+                <li>Teste em uma área piloto</li>
+                <li>Padronize e monitore</li>
+              </ol>
+            </div>
+          </aside>
+        </div>
+      `;
+      detailEl.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetail(){
+      detailEl.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeDetail);
+    detailEl.addEventListener('click', (e)=>{ if(e.target===detailEl) closeDetail() });
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeDetail() });
+
+    // Accessibility: focus trap (simple)
+    detailEl.addEventListener('keydown', (e)=>{
+      if(e.key==='Tab'){
+        const focusable = detailEl.querySelectorAll('button,a,input,textarea,select,[tabindex]:not([tabindex="-1"])');
+        if(focusable.length===0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length-1];
+        if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+        else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // small optimization: open first term on double-click header logo (EASTER EGG)
+    document.querySelector('.logo').addEventListener('dblclick', ()=>openDetail(TERMS[0].id));
+
+  </script>
+</body>
+</html>
