@@ -1,89 +1,89 @@
 <!DOCTYPE html><html lang="pt-BR">
-    <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Termos Técnicos de Gestão</title>
-    <style>
-      :root {
-          --bg-light: #ffffff;
-              --bg-dark: #121212;
-                  --text-light: #000000;
-                      --text-dark: #ffffff;
-                          --primary: #007BFF;
-                              --secondary: #6c757d;
-                                }
-                                  body {
-                                      margin: 0;
-                                          font-family: Arial, sans-serif;
-                                              background-color: var(--bg-light);
-                                                  color: var(--text-light);
-                                                      transition: background-color 0.3s, color 0.3s;
-                                                        }
-                                                          body.dark-mode {
-                                                              background-color: var(--bg-dark);
-                                                                  color: var(--text-dark);
-                                                                    }
-                                                                      header {
-                                                                          display: flex;
-                                                                              justify-content: space-between;
-                                                                                  align-items: center;
-                                                                                      padding: 1rem;
-                                                                                          background-color: var(--primary);
-                                                                                              color: white;
-                                                                                                }
-                                                                                                  header h1 { margin: 0; }
-                                                                                                    button.toggle-mode {
-                                                                                                        background: none;
-                                                                                                            border: 2px solid white;
-                                                                                                                padding: 0.5rem 1rem;
-                                                                                                                    color: white;
-                                                                                                                        cursor: pointer;
-                                                                                                                            border-radius: 5px;
-                                                                                                                              }
-                                                                                                                                .grid {
-                                                                                                                                    display: grid;
-                                                                                                                                        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                                                                                                                                            gap: 1rem;
-                                                                                                                                                padding: 1rem;
-                                                                                                                                                  }
-                                                                                                                                                    .card {
-                                                                                                                                                        background-color: rgba(255,255,255,0.9);
-                                                                                                                                                            border-radius: 10px;
-                                                                                                                                                                padding: 1rem;
-                                                                                                                                                                    text-align: center;
-                                                                                                                                                                        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-                                                                                                                                                                            transition: transform 0.2s;
-                                                                                                                                                                              }
-                                                                                                                                                                                body.dark-mode .card {
-                                                                                                                                                                                    background-color: rgba(30,30,30,0.9);
-                                                                                                                                                                                      }
-                                                                                                                                                                                        .card:hover {
-                                                                                                                                                                                            transform: scale(1.05);
-                                                                                                                                                                                              }
-                                                                                                                                                                                                .card img {
-                                                                                                                                                                                                    max-width: 60px;
-                                                                                                                                                                                                        margin-bottom: 0.5rem;
-                                                                                                                                                                                                          }
-                                                                                                                                                                                                          </style>
-                                                                                                                                                                                                          </head>
-                                                                                                                                                                                                          <body>
-                                                                                                                                                                                                          <header>
-                                                                                                                                                                                                            <h1>Termos Técnicos de Gestão</h1>
-                                                                                                                                                                                                              <button class="toggle-mode">🌙 Modo Escuro</button>
-                                                                                                                                                                                                              </header>
-                                                                                                                                                                                                              <main class="grid">
-                                                                                                                                                                                                                <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="5S"/><h2>5S</h2><p>Metodologia japonesa para organização e limpeza no ambiente de trabalho.</p></div>
-                                                                                                                                                                                                                  <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="5W2H"/><h2>5W2H</h2><p>Ferramenta de planejamento para responder "O que, Por que, Onde, Quando, Quem, Como, Quanto".</p></div>
-                                                                                                                                                                                                                    <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/2910/2910768.png" alt="SMART"/><h2>SMART</h2><p>Definição de metas específicas, mensuráveis, alcançáveis, relevantes e temporais.</p></div>
-                                                                                                                                                                                                                      <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828673.png" alt="Ishikawa"/><h2>Ishikawa</h2><p>Diagrama de causa e efeito para análise de problemas.</p></div>
-                                                                                                                                                                                                                        <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Skills"/><h2>Skills</h2><p>Competências profissionais: Hard, Soft e Deep Skills.</p></div>
-                                                                                                                                                                                                                          <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png" alt="Kanban"/><h2>Kanban</h2><p>Método visual para gestão de fluxo de trabalho.</p></div>
-                                                                                                                                                                                                                            <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1157/1157109.png" alt="POAA"/><h2>P.O.A.A</h2><p>Planejar, Organizar, Atuar e Avaliar processos e tarefas.</p></div>
-                                                                                                                                                                                                                            </main>
-                                                                                                                                                                                                                            <script>
-                                                                                                                                                                                                                              document.querySelector('.toggle-mode').addEventListener('click', () => {
-                                                                                                                                                                                                                                  document.body.classList.toggle('dark-mode');
-                                                                                                                                                                                                                                    });
-                                                                                                                                                                                                                                    </script>
-                                                                                                                                                                                                                                    </body>
-                                                                                                                                                                                                                                    </html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Termos Técnicos de Gestão</title>
+<style>
+  :root {
+    --bg-light: #ffffff;
+    --bg-dark: #121212;
+    --text-light: #000000;
+    --text-dark: #ffffff;
+    --primary: #007BFF;
+    --secondary: #6c757d;
+  }
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--primary);
+    color: white;
+  }
+  header h1 { margin: 0; }
+  button.toggle-mode {
+    background: none;
+    border: 2px solid white;
+    padding: 0.5rem 1rem;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .card {
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+  }
+  body.dark-mode .card {
+    background-color: rgba(30,30,30,0.9);
+  }
+  .card:hover {
+    transform: scale(1.05);
+  }
+  .card img {
+    max-width: 60px;
+    margin-bottom: 0.5rem;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>Termos Técnicos de Gestão</h1>
+  <button class="toggle-mode">🌙 Modo Escuro</button>
+</header>
+<main class="grid">
+  <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="5S"/><h2>5S</h2><p>Metodologia japonesa para organização e limpeza no ambiente de trabalho.</p></div>
+  <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828640.png" alt="5W2H"/><h2>5W2H</h2><p>Ferramenta de planejamento para responder "O que, Por que, Onde, Quando, Quem, Como, Quanto".</p></div>
+  <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/2910/2910768.png" alt="SMART"/><h2>SMART</h2><p>Definição de metas específicas, mensuráveis, alcançáveis, relevantes e temporais.</p></div>
+  <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1828/1828673.png" alt="Ishikawa"/><h2>Ishikawa</h2><p>Diagrama de causa e efeito para análise de problemas.</p></div>
+  <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Skills"/><h2>Skills</h2><p>Competências profissionais: Hard, Soft e Deep Skills.</p></div>
+  <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/3063/3063822.png" alt="Kanban"/><h2>Kanban</h2><p>Método visual para gestão de fluxo de trabalho.</p></div>
+  <div class="card"><img src="https://cdn-icons-png.flaticon.com/512/1157/1157109.png" alt="POAA"/><h2>P.O.A.A</h2><p>Planejar, Organizar, Atuar e Avaliar processos e tarefas.</p></div>
+</main>
+<script>
+  document.querySelector('.toggle-mode').addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+</body>
+</html>
