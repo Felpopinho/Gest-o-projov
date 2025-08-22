@@ -112,6 +112,10 @@
       text-align: center;
     }
 
+    .panfleto {
+      width: 100%;
+    }
+
     footer {
       background: #1e88e5;
       color: white;
@@ -243,7 +247,7 @@
       detailTitle.textContent = termo.titulo;
       detailDesc.textContent = termo.descricao;
       detailExample.textContent = termo.exemplo;
-      detailIllustration.innerHTML = `<img src=${termo.ilustracao}/>`
+      detailIllustration.innerHTML = `<img src=${termo.ilustracao} class='panfleto'/>`
       cardsContainer.style.display = "none";
       searchBox.style.display = "none";
       detailPage.style.display = "block";
