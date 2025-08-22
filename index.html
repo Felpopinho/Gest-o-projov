@@ -243,7 +243,7 @@
       detailTitle.textContent = termo.titulo;
       detailDesc.textContent = termo.descricao;
       detailExample.textContent = termo.exemplo;
-      detailIllustration.setAttribute = ("src", "./assets/5s.jpg");
+      detailIllustration.innerHTML = `<img src=${termo.ilustracao}/>`
       cardsContainer.style.display = "none";
       searchBox.style.display = "none";
       detailPage.style.display = "block";
