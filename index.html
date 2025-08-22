@@ -140,7 +140,7 @@
       <a class="back-btn" onclick="voltar()">⬅ Voltar</a>
       <h2 id="detail-title"></h2>
       <p id="detail-desc"></p>
-      <img class="illustration" id="detail-illustration" src=""></img>
+      <img class="illustration" id="detail-illustration"></img>
       <h3>Exemplo Prático</h3>
       <p id="detail-example"></p>
     </div>
@@ -244,7 +244,6 @@
       detailDesc.textContent = termo.descricao;
       detailExample.textContent = termo.exemplo;
       detailIllustration.setAttribute = ('src',termo.ilustracao);
-
       cardsContainer.style.display = "none";
       searchBox.style.display = "none";
       detailPage.style.display = "block";
